@@ -71,12 +71,6 @@ Want to do the challenge too?
 
 ## 🙌 Let's Connect!
 
-- 🔗 [GitHub](https://github.com/your-username)
-- 🧑‍💻 [GeeksforGeeks Profile](#) *(Insert your GFG profile link)*
-
----
-
-
 Feel free to connect with me or share your thoughts:
 
 - 🔗 [Linkedin](https://www.linkedin.com/in/anisha-mahto-766a64346/)
