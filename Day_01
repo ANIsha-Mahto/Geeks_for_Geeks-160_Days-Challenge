@@ -1,0 +1,23 @@
+#include<climits>
+
+class Solution {
+  public:
+    int getSecondLargest(vector<int> &arr) {
+        int n=arr.size();
+        if(n<2)return -1;
+        
+        int first=INT_MIN;
+        int second=INT_MIN;
+        
+        for(int x:arr){
+            if(x>first){
+                second=first;
+                first=x;
+            }else if(x<first && x>second){
+                second=x;
+            }
+        }
+        return(second==INT_MIN)? -1:second;
+        
+    }
+};
