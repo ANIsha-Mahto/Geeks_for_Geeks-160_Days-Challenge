@@ -1,0 +1,19 @@
+#include<algorithm>
+
+class Solution {
+  public:
+
+    // Function to rotate an array by d elements in counter-clockwise direction.
+    void rotateArr(vector<int>& arr, int d) {
+        int n=arr.size();
+        if(n==0) return;
+        d%=n;
+        if(d==0) return;
+        
+        std::reverse(arr.begin(),arr.begin()+d);
+        std::reverse(arr.begin()+d,arr.end());
+        std::reverse(arr.begin(),arr.end());
+        
+        
+    }
+};
