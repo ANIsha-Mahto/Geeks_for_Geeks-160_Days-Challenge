@@ -1,0 +1,17 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+
+class Solution {
+  public:
+    int maxSubarraySum(std::vector<int> &arr) {
+        // Code here
+        int maxfar=arr[0];
+        int currsum=arr[0];
+        for(size_t i=1;i<arr.size();i++){
+            currsum=std::max(arr[i],currsum+arr[i]);
+            maxfar=std::max(maxfar,currsum);
+        }
+        return maxfar;
+    }
+};
