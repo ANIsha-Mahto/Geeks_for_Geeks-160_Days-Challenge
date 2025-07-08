@@ -1,0 +1,19 @@
+#include<vector>
+#include<algorithm>
+
+class Solution {
+  public:
+    int maximumProfit(std::vector<int> &prices) {
+        // code here
+        int minprice=INT_MAX;
+        int maximumprofit=0;
+        for(int price:prices){
+            if(price<minprice){
+                minprice=price;
+            }else{
+                maximumprofit=std::max(maximumprofit,price-minprice);
+            }
+        }
+        return maximumprofit;
+    }
+};
