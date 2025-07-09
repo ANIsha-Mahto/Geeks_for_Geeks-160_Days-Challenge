@@ -1,0 +1,30 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+
+class Solution {
+  public:
+    int circularSubarraySum(std::vector<int> &arr) {
+        int totalSum=0;
+        int maxKadane=arr[0];
+        int currMax=arr[0];
+        int minKadane=arr[0];
+        int currMin=arr[0];
+        
+        for(size_t i=1;i<arr.size();++i){
+            currMax=std::max(arr[i],currMax+arr[i]);
+            maxKadane=std::max(maxKadane,currMax);
+            
+            currMin=std::min(arr[i],currMin+arr[i]);
+            minKadane=std::min(minKadane,currMin);
+        }
+        for(int val:arr)
+            totalSum+=val;
+        
+        if(totalSum==minKadane)
+            return maxKadane;
+        
+        return std::max(maxKadane,totalSum-minKadane);
+        
+    }
+};
