@@ -1,0 +1,25 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+
+class Solution {
+  public:
+    int maxProduct(std::vector<int> &arr) {
+        // code here
+        int n=arr.size();
+        int maxEndingHere=arr[0];
+        int minEndingHere=arr[0];
+        int maxSoFar=arr[0];
+        
+        for(int i=1;i<n;++i){
+            if(arr[i]<0)
+                std::swap(maxEndingHere,minEndingHere);
+            maxEndingHere=std::max(arr[i],maxEndingHere*arr[i]);
+            minEndingHere=std::min(arr[i],minEndingHere*arr[i]);
+            
+            maxSoFar=std::max(maxSoFar,maxEndingHere);
+        }
+    
+        return maxSoFar;
+    }
+};
