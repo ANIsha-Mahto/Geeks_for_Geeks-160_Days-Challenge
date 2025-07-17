@@ -1,0 +1,26 @@
+#include<iostream>
+#include<string>
+#include<vector>
+#include<algorithm>
+
+class Solution {
+  public:
+    int minChar(const std::string &s) {
+        std::string rev=s;
+        std::reverse(rev.begin(),rev.end());
+        std::string temp=s+"#"+rev;
+        int n=temp.size();
+        std::vector<int>lps(n,0);
+        for(int i=1;i<n;++i){
+            int len=lps[i-1];
+            while(len>0 && temp[i]!=temp[len]){
+                len=lps[len-1];
+            }if(temp[i]==temp[len]){
+                ++len;
+            }
+            lps[i]=len;
+        }
+        return s.size()-lps[n-1]; 
+        
+    }
+};
