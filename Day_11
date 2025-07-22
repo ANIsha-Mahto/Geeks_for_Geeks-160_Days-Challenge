@@ -1,0 +1,44 @@
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+class Solution {
+  public:
+    int mergeandcount(vector<int>&arr,int left,int mid,int right){
+        vector<int> leftarr(arr.begin()+left,arr.begin()+mid+1);
+        vector<int> rightarr(arr.begin()+mid+1,arr.begin()+right+1);
+        int i=0,j=0,k=left;
+        int inversionCount=0;
+        while(i<leftarr.size() && j<rightarr.size()){
+            if(leftarr[i]<=rightarr[j]){
+                arr[k++]=leftarr[i++];
+            }else{
+                arr[k++]=rightarr[j++];
+                inversionCount+=(leftarr.size()-i);
+            }
+        }
+        while(i<leftarr.size())arr[k++]=leftarr[i++];
+        while(j<rightarr.size())arr[k++]=rightarr[j++];
+        
+        return inversionCount;
+    }
+    
+            
+    int mergesortandcount(vector<int>&arr,int left,int right){
+            int inversionCount=0;
+            if(left<right){
+                int mid=left+(right-left)/2;
+                inversionCount+=mergesortandcount(arr,left,mid);
+                inversionCount+=mergesortandcount(arr,mid+1,right);
+                inversionCount+=mergeandcount(arr,left,mid,right);
+            }
+            return inversionCount;
+    }
+        
+    int inversionCount(vector<int> &arr) {
+            return mergesortandcount(arr,0,arr.size()-1);
+    }
+        
+
+};
