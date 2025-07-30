@@ -1,0 +1,19 @@
+class Solution {
+  public:
+    int peakElement(vector<int> &arr) {
+        int n=arr.size();
+        int low=0,high=n-1;
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            long long left=(mid==0)?LLONG_MIN:arr[mid-1];
+            long long right=(mid==n-1)?LLONG_MIN:arr[mid+1];
+            if(arr[mid]>left && arr[mid]>right)
+               return mid;
+            if(arr[mid]<right)
+               low=mid+1;
+            else
+               high=mid-1;
+        }
+        return -1;
+    }
+};
