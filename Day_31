@@ -1,0 +1,35 @@
+class Solution {
+  public:
+    vector<int> intersect(vector<int>& a, vector<int>& b) {
+        unordered_set<int>s(a.begin(),a.end());
+        vector<int>res;
+       // unordered_map<int,int>seen;
+        // for(int i=0;i<a.size();i++){
+        //     for(int j=0;j<b.size();j++){
+        //         if(a[i]==b[j]){
+        //             int k;
+        //             for(k=0;k<res.size();k++)
+        //                 if(res[k]==a[i])
+        //                   break;
+        //               if(k==res.size()){
+        //                   res.push_back(a[i]);
+        //                 }
+        //         }
+        //         // }//&& seen.count(a[i])==0){
+        //         // seen.insert({a[i],1});
+        //         // res.push_back(a[i]);
+        //         // }
+        //     }
+        // }
+        
+        for(int num:b){
+            if(s.count(num)){
+                res.push_back(num);
+                s.erase(num);
+            }
+        }
+      
+        return res;  
+    }
+    
+};
