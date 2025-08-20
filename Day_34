@@ -1,0 +1,22 @@
+// User function Template for C++
+
+class Solution {
+  public:
+    vector<vector<string>> anagrams(vector<string>& arr) {
+        unordered_map<string,vector<string>>anagramMap;
+        vector<string>order;
+        for(const string& word:arr){
+            string key=word;
+            sort(key.begin(),key.end());
+            if(anagramMap.find(key)==anagramMap.end()){
+                 order.push_back(key);
+            }
+            anagramMap[key].push_back(word);
+        }
+        vector<vector<string>>result;
+        for(const string&key :order){
+            result.push_back(anagramMap[key]);
+        }
+        return result;
+    }
+};
