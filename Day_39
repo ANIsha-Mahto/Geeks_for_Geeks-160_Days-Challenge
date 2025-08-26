@@ -1,0 +1,40 @@
+class Solution {
+  public:
+    vector<int> sumClosest(vector<int>& arr, int target) {
+
+        
+        int n=arr.size();
+        if(n<2) return {};
+        sort(arr.begin(),arr.end());
+        int left=0,right=n-1;
+        int minDiff=INT_MAX;
+        vector<int>bestPair;
+        
+        while(left<right){
+            int sum=arr[left]+arr[right];
+            int diff=abs(sum-target);
+        
+            if(diff<minDiff){
+                minDiff=diff;
+                bestPair={arr[left],arr[right]};
+            }
+            else if(diff==minDiff){
+                int currAbsDiff=abs(arr[left]-arr[right]);
+                int bestAbsDiff=abs(bestPair[1]-bestPair[0]);
+                if(currAbsDiff>bestAbsDiff){
+                    bestPair={arr[left],arr[right]};
+                }
+            }
+                if(sum<target)
+                      left++;
+                else  
+                      --right;
+                
+            
+            
+        }
+        
+    return bestPair;   
+    }
+   
+};
