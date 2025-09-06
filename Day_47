@@ -1,0 +1,38 @@
+class Solution {
+  public:
+    // Function to find equilibrium point in the array.
+    int findEquilibrium(vector<int> &arr) {
+        //int n=arr.size();
+       
+        // for(int i=0;i<n;++i){
+        //     int leftsum=0;
+        //     int rightsum=0;
+        //     for(int j=0;j<i;j++){
+        //         leftsum+=arr[j];
+        //     }
+        //     for(int j=i+1;j<n;j++){
+                
+        //         rightsum+=arr[j];
+                
+        //     }
+        //     if(leftsum==rightsum)
+        //       return i;
+        // }
+        // return -1;
+        
+        int totalsum=0;
+        for(int var:arr){
+            totalsum+=var;
+        }
+        int leftsum=0;
+        for(int i=0;i<arr.size();i++){
+            int rightsum=totalsum-leftsum-arr[i];
+            if(leftsum==rightsum)
+               return i;
+            leftsum+=arr[i];
+        }
+        return -1;
+        
+        
+    }
+};
