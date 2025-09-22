@@ -1,0 +1,23 @@
+class Solution {
+  public:
+    void backtrack(string &s,int index,vector<string> &result, set<string> &seen){
+        if(index==s.size()){
+            if(seen.find(s)==seen.end()){
+                result.push_back(s);
+                seen.insert(s);
+            }
+            return;
+        }
+        for(int i=index;i<s.size();i++){
+            swap(s[index],s[i]);
+            backtrack(s,index+1,result,seen);
+            swap(s[index],s[i]);
+        }
+    }
+    vector<string> findPermutation(string &s) {
+        vector<string>result;
+        set<string>seen;
+        backtrack(s,0,result,seen);
+        return result;
+    }
+};
